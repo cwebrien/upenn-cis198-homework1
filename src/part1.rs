@@ -24,11 +24,11 @@
 */
 
 pub fn double_v1(n: i32) -> i32 {
-    unimplemented!()
+    n * 2
 }
 
 pub fn double_v2(n: &i32) -> i32 {
-    unimplemented!()
+    *n * 2
 }
 
 pub fn double_v3(n: &mut i32) {
@@ -42,12 +42,22 @@ fn test_double_v1() {
     assert_eq!(double_v1(2), 4);
     assert_eq!(double_v1(-3), -6);
 }
-// #[test]
-// fn test_double_v2() {
-// }
-// #[test]
-// fn test_double_v3() {
-// }
+
+#[test]
+fn test_double_v2() {
+    let a: i32 = 2;
+    let b: i32 = -3;
+    assert_eq!(double_v2(&a), 4);
+    assert_eq!(double_v2(&b), -6);
+}
+
+//#[test]
+//fn test_double_v3() {
+//    let mut a: i32 = 2;
+//    let mut b: i32 = -3;
+//    assert_eq!(double_v3(&a), 4);
+//    assert_eq!(double_v3(&b), -6);
+//}
 
 /*
     Problem 2: Integer square root
