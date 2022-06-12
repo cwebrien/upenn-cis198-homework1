@@ -67,7 +67,25 @@ fn test_double_v3() {
     efficiently than trying every possibility.
 */
 pub fn sqrt(n: usize) -> usize {
-    unimplemented!()
+    for i in 1..(n + 1) {
+        if i * i > n {
+            return i - 1
+        }
+    }
+    return 1
+}
+
+#[test]
+fn test_sqrt() {
+    assert_eq!(sqrt(1), 1);
+    assert_eq!(sqrt(2), 1);
+
+    assert_eq!(sqrt(4), 2);
+    assert_eq!(sqrt(10000), 100);
+
+    assert_eq!(sqrt(8), 2);
+    assert_eq!(sqrt(10), 3);
+    assert_eq!(sqrt(10001), 100);
 }
 
 // Remember to write unit tests here (and on all future functions)
