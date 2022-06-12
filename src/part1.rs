@@ -32,11 +32,9 @@ pub fn double_v2(n: &i32) -> i32 {
 }
 
 pub fn double_v3(n: &mut i32) {
-    // double n in place
-    unimplemented!()
+    *n = *n * 2;
 }
 
-// Example unit test (so you can recall the syntax)
 #[test]
 fn test_double_v1() {
     assert_eq!(double_v1(2), 4);
@@ -51,13 +49,15 @@ fn test_double_v2() {
     assert_eq!(double_v2(&b), -6);
 }
 
-//#[test]
-//fn test_double_v3() {
-//    let mut a: i32 = 2;
-//    let mut b: i32 = -3;
-//    assert_eq!(double_v3(&a), 4);
-//    assert_eq!(double_v3(&b), -6);
-//}
+#[test]
+fn test_double_v3() {
+    let mut a: i32 = 2;
+    let mut b: i32 = -3;
+    double_v3(&mut a);
+    double_v3(&mut b);
+    assert_eq!(a, 4);
+    assert_eq!(b, -6);
+}
 
 /*
     Problem 2: Integer square root
