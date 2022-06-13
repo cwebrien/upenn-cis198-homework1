@@ -101,20 +101,33 @@ fn test_sqrt() {
 
     Which of the two ways do you prefer?
 */
-pub fn sum_v1(slice: &[i32]) -> i32 {
-    // do some initialization...
-    for &v in slice {
-        // ...
+pub fn sum_v1(nums: &[i32]) -> i32 {
+    let mut result = 0;
+    for &v in nums {
+        result = result + v;
     }
-    unimplemented!()
+    result
 }
 
-pub fn sum_v2(slice: &[i32]) -> i32 {
+pub fn sum_v2(nums: &[i32]) -> i32 {
+    let mut result: i32 = 0;
     // do some initialization...
-    for v in slice {
-        // ...
+    for v in nums {
+        result = result + v;
     }
-    unimplemented!()
+    result
+}
+
+#[test]
+fn test_sum_v1() {
+    let nums = [1, 2, 3, 5, 8];
+    assert_eq!(sum_v1(&nums), 19);
+}
+
+#[test]
+fn test_sum_v2() {
+    let nums = [1, 2, 3, 5, 8];
+    assert_eq!(sum_v2(&nums), 19);
 }
 
 /*
