@@ -175,7 +175,13 @@ fn test_unique() {
     to know is that pred is a function from i32 to bool.
 */
 pub fn filter(slice: &[i32], pred: impl Fn(i32) -> bool) -> Vec<i32> {
-    unimplemented!()
+    let mut result: Vec<i32> = Vec::new();
+    for n in slice {
+        if pred(*n) {
+            result.push(*n);
+        }
+    }
+    result
 }
 
 #[test]
