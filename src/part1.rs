@@ -138,8 +138,33 @@ fn test_sum_v2() {
     This doesn't need to be efficient; you can use a for loop.
 */
 
-pub fn unique(slice: &[i32]) -> Vec<i32> {
-    unimplemented!()
+pub fn unique(nums: &[i32]) -> Vec<i32> {
+    let mut result: Vec<i32> = Vec::new();
+
+    for n in nums {
+        let mut already_contains: bool = false;
+        for i in result.iter() {
+            if i == n {
+                already_contains = true;
+                break;
+            }
+        };
+        
+        if !already_contains {
+            result.push(*n);
+        }
+    }
+
+    result
+}
+
+#[test]
+fn test_unique() {
+    let case = [1, -1, -2, -1, 5, 10, 10, 12, 15];
+    let expected = [1, -1, -2, 5, 10, 12, 15];
+
+    let unique_nums = unique(&case);
+    assert_eq!(unique_nums, expected);
 }
 
 /*
