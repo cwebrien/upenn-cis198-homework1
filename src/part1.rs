@@ -200,7 +200,18 @@ fn test_filter() {
     where v[i] is the ith fibonacci number.
 */
 pub fn fibonacci(n1: i32, n2: i32, out_size: usize) -> Vec<i32> {
-    unimplemented!()
+    let mut result: Vec<i32> = Vec::from([n1, n2]);
+    for i in 1 .. out_size - 1 {
+        result.push(result[i] + result[i - 1]);
+    }
+
+    result
+}
+
+#[test]
+fn test_fibonaci() {
+    assert_eq!(fibonacci(1, 2, 7), vec![1, 2, 3, 5, 8, 13, 21]);
+    assert_eq!(fibonacci(4, 6, 8), vec![4, 6, 10, 16, 26, 42, 68, 110]);
 }
 
 /*
