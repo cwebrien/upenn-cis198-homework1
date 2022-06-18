@@ -225,11 +225,25 @@ fn test_fibonaci() {
     What are some reasons the second function is not efficient?
 */
 pub fn str_concat(s1: &str, s2: &str) -> String {
-    unimplemented!()
+    let result = format!("{}{}", s1, s2);
+    return result;
 }
 
-pub fn string_concat(s1: String, s2: String) -> String {
-    unimplemented!()
+#[test]
+fn test_str_concat() {
+    let expected = String::from("ABCdef");
+    assert_eq!(str_concat("ABC", "def"), expected);
+}
+
+pub fn string_concat(s1: String, s2: String) -> String {    
+    let result = format!("{}{}", s1, s2);
+    return result;
+}
+
+#[test]
+fn test_string_concat() {
+    let expected = String::from("ABCdef");
+    assert_eq!(str_concat("ABC", "def"), expected);
 }
 
 /*
@@ -240,7 +254,17 @@ pub fn string_concat(s1: String, s2: String) -> String {
 */
 
 pub fn concat_all(v: Vec<String>) -> String {
-    unimplemented!()
+    let mut result = String::new();
+    for s in v {
+        result = string_concat(result, s);
+    }
+    return result;
+}
+
+#[test]
+fn test_concat_all() {
+    let test_case = vec![String::from("abc"), String::from("DEF"), String::from("g!h")];
+    assert_eq!(concat_all(test_case), "abcDEFg!h");
 }
 
 /*
